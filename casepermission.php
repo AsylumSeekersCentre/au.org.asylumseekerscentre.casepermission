@@ -124,7 +124,7 @@ function casepermission_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 }
 
 function casepermission_civicrm_permission(&$permissions) {
-    $caseTypes = civicrm_api3('CaseType', 'get', array('sequential' => 0,));
+    $caseTypes = civicrm_api3('CaseType', 'get', array('sequential' => 0, 'options' => array('limit' => 0),));
     //$actions = array('add', 'view', 'edit', 'delete');
     $actions = array('access');
     $prefix = ts('CiviCase') . ': ';
@@ -149,7 +149,7 @@ function casepermission_civicrm_permission(&$permissions) {
 
 function casepermission_civicrm_selectWhereClause($entity, &$clauses) {
   if (strtolower($entity) == "case") {
-    $caseTypes = civicrm_api3('CaseType', 'get', array('sequential' => 0,));
+    $caseTypes = civicrm_api3('CaseType', 'get', array('sequential' => 0, 'options' => array('limit' => 0),));
     $extra = array();
     foreach($caseTypes['values'] as $caseTypeId => $caseType) {
       $caseTypeName = $caseType['name'];
