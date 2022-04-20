@@ -154,7 +154,7 @@ function casepermission_civicrm_selectWhereClause($entity, &$clauses) {
     foreach($caseTypes['values'] as $caseTypeId => $caseType) {
       $caseTypeName = $caseType['name'];
       $permission = 'access cases of type '.$caseTypeName;
-      $access = user_access($permission);
+      $access = CRM_Core_Permission::check($permission);
       if ($access) {
         $extra[] = (int)$caseType['id'];
       }
