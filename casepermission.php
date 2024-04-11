@@ -38,20 +38,20 @@ function casepermission_civicrm_permission(&$permissions) {
     foreach ($caseTypes['values'] as $caseTypeObject) {
         $caseType = $caseTypeObject['name'];
         foreach ($actions as $action) {
-            $permissions[$action . ' cases of type ' . $caseType] = array(
-                $prefix . ts($action . ' cases of type ') . $caseType,
-                ts(ucfirst($action) . ' cases of type ' ) . $caseType,
-            );
+            $permissions[$action . ' cases of type ' . $caseType] = [
+                'label' => $prefix . ts($action . ' cases of type ') . $caseType,
+                'description' => ts(ucfirst($action) . ' cases of type ' ) . $caseType,
+            ];
         }
     }
-    $permissions['administer CiviCRM Case Type Permissions'] = array(
-        $prefix . ts('administer CiviCRM Case Type Permissions'),
-        ts('Administer access to CiviCRM Case Type Permissions'),
-    );
-    $permissions['access Food Bank menu items'] = array(
-        'CiviCRM: ' . ts('access Food Bank menu items'),
-        ts('access Food Bank menu items'),
-    );
+    $permissions['administer CiviCRM Case Type Permissions'] = [
+        'label' => $prefix . ts('administer CiviCRM Case Type Permissions'),
+        'description' => ts('Administer access to CiviCRM Case Type Permissions'),
+    ];
+    $permissions['access Food Bank menu items'] = [
+        'label' => 'CiviCRM: ' . ts('access Food Bank menu items'),
+        'description' => ts('access Food Bank menu items'),
+    ];
 }
 
 function casepermission_civicrm_selectWhereClause($entity, &$clauses) {
